@@ -47,7 +47,7 @@
      ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation("byg:palo_verde_wood", "inventory"));
    }
    
-   public static class BlockCustom extends Block {
+   public static class BlockCustom extends BYGWoodBlock {
      public BlockCustom() {
        super(Material.WOOD);
        setRegistryName("palo_verde_wood");

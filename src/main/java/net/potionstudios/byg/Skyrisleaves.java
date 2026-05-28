@@ -51,10 +51,11 @@
    
    @SideOnly(Side.CLIENT)
    public void registerModels(ModelRegistryEvent event) {
+     BYGLeafBlock.registerStateMapper(block);
      ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation("byg:skyrisleaves", "inventory"));
    }
    
-   public static class BlockCustom extends Block {
+   public static class BlockCustom extends BYGLeafBlock {
      public BlockCustom() {
        super(Material.LEAVES);
        setRegistryName("skyrisleaves");
@@ -102,6 +103,9 @@
      
      public void updateTick(World world, BlockPos pos, IBlockState state, Random random) {
        super.updateTick(world, pos, state, random);
+      if (world.getBlockState(pos).getBlock() != this) {
+        return;
+      }
        int x = pos.getX();
        int y = pos.getY();
        int z = pos.getZ();

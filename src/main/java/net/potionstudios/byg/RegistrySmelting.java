@@ -72,7 +72,6 @@ extends Elementsbyg.ModElement {
 		     GameRegistry.addSmelting(new ItemStack(Pine_wood.block, 1), new ItemStack(Items.COAL, 1, 1), 0.15F);
 		     GameRegistry.addSmelting(new ItemStack(Pinelog.block, 1), new ItemStack(Items.COAL, 1, 1), 0.15F);
 		     GameRegistry.addSmelting(new ItemStack(Plant_stem.block, 1), new ItemStack(Items.COAL, 1, 1), 0.15F);
-		     GameRegistry.addSmelting(new ItemStack(Rainbow_eucalyptus_wood_wall.block, 1), new ItemStack(Items.COAL, 1, 1), 0.15F);
 		     GameRegistry.addSmelting(new ItemStack(Rainbow_eucalyptus_wood.block, 1), new ItemStack(Items.COAL, 1, 1), 0.15F);
 		     GameRegistry.addSmelting(new ItemStack(Rainboweucalyptuslog.block, 1), new ItemStack(Items.COAL, 1, 1), 0.15F);
 		     GameRegistry.addSmelting(new ItemStack(Redwood_wood.block, 1), new ItemStack(Items.COAL, 1, 1), 0.15F);
@@ -131,6 +130,8 @@ extends Elementsbyg.ModElement {
 		     GameRegistry.addSmelting(new ItemStack(Stripped_zelkova_wood.block, 1), new ItemStack(Items.COAL, 1, 1), 0.15F);
 		     GameRegistry.addSmelting(new ItemStack(Strippedfirlog.block, 1), new ItemStack(Items.COAL, 1, 1), 0.15F);
 		     GameRegistry.addSmelting(new ItemStack(Strippedfirwood.block, 1), new ItemStack(Items.COAL, 1, 1), 0.15F);
+		     GameRegistry.addSmelting(new ItemStack(Thorn_branches.block, 1), new ItemStack(Items.COAL, 1, 1), 0.15F);
+		     GameRegistry.addSmelting(new ItemStack(Thornblock.block, 1), new ItemStack(Items.COAL, 1, 1), 0.15F);
 		     GameRegistry.addSmelting(new ItemStack(Willow_wood.block, 1), new ItemStack(Items.COAL, 1, 1), 0.15F);
 		     GameRegistry.addSmelting(new ItemStack(Willowlog.block, 1), new ItemStack(Items.COAL, 1, 1), 0.15F);
 		     GameRegistry.addSmelting(new ItemStack(Witch_hazel_wood.block, 1), new ItemStack(Items.COAL, 1, 1), 0.15F);

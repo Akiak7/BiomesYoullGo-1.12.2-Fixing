@@ -52,7 +52,7 @@
    }
    
    public static class BlockCustom
-     extends Block {
+     extends BYGWoodBlock {
      public static final PropertyDirection FACING = BlockDirectional.FACING;
      
      public BlockCustom() {

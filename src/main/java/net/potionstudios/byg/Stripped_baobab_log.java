@@ -52,7 +52,7 @@
      ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation("byg:stripped_baobab_log", "inventory"));
    }
    
-   public static class BlockCustom extends Block {
+   public static class BlockCustom extends BYGWoodBlock {
      public static final PropertyDirection FACING = BlockDirectional.FACING;
      
      public BlockCustom() {

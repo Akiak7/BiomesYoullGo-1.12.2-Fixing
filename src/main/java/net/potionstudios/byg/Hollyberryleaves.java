@@ -45,10 +45,11 @@
    
    @SideOnly(Side.CLIENT)
    public void registerModels(ModelRegistryEvent event) {
+     BYGLeafBlock.registerStateMapper(block);
      ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation("byg:hollyberryleaves", "inventory"));
    }
    
-   public static class BlockCustom extends Block {
+   public static class BlockCustom extends BYGLeafBlock {
      public BlockCustom() {
        super(Material.LEAVES);
        setRegistryName("hollyberryleaves");

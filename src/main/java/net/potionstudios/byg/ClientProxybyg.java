@@ -10,16 +10,18 @@
 /*    */ public class ClientProxybyg
 /*    */   implements IProxybyg
 /*    */ {
-/*    */   public void init(FMLInitializationEvent event) {}
+/*    */   public void init(FMLInitializationEvent event) {
+/* 14 */     BYGRLFoliageCompat.install();
+/*    */   }
 /*    */   
 /*    */   public void preInit(FMLPreInitializationEvent event) {
 /* 16 */     OBJLoader.INSTANCE.addDomain("byg");
+/* 17 */     BYGRLFoliageCompat.install();
 /*    */   }
 /*    */   
 /*    */   public void postInit(FMLPostInitializationEvent event) {}
 /*    */   
 /*    */   public void serverLoad(FMLServerStartingEvent event) {}
 /*    */ }
-
 
 

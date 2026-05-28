@@ -48,7 +48,7 @@
    }
    
    public static class BlockCustom
-     extends Block {
+     extends BYGWoodBlock {
      public BlockCustom() {
        super(Material.WOOD);
        setRegistryName("rainbow_eucalyptus_wood");

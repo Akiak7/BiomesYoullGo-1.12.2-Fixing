@@ -11,7 +11,10 @@
    public BYGTab(Elementsbyg instance) {
      super(instance, 317);
    }
-   public static CreativeTabs tab = (new CreativeTabs("tabbyg")
+   public static CreativeTabs tab = createTab();
+
+   private static CreativeTabs createTab() {
+     CreativeTabs tab = new CreativeTabs("tabbyg")
      {
        @SideOnly(Side.CLIENT)
        public ItemStack getTabIconItem() {
@@ -22,8 +25,9 @@
        public boolean hasSearchBar() {
          return true;
        }
-     }).setBackgroundImageName("item_search.png");
- }
-
-
+     };
+     tab.setBackgroundImageName("item_search.png");
+     return tab;
+   }
+  }
 

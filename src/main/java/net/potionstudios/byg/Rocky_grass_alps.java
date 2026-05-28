@@ -89,7 +89,7 @@
      } 
    }
    
-   public static class BlockCustom extends Block {
+  public static class BlockCustom extends BYGGrassBlock {
      public BlockCustom() {
        super(Material.ROCK);
        setRegistryName("rocky_grass_alps");
@@ -153,6 +153,5 @@
      }
    }
  }
-
 
 
