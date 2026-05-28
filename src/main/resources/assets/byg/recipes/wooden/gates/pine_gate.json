@@ -1,0 +1,21 @@
+{
+  "group": "byg",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BPB",
+    "BPB"
+  ],
+  "key": {
+    "P": {
+      "item": "byg:pineplanks"
+    },
+    "B": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    }
+  },
+  "result": {
+    "item": "byg:pine_gate",
+    "count": 1
+  }
+}

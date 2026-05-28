@@ -1,0 +1,36 @@
+{
+  "group": "byg",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    " 7 "
+  ],
+  "key": {
+    "0": {
+      "item": "byg:pendoritegem"
+    },
+    "1": {
+      "item": "byg:pendoritegem"
+    },
+    "2": {
+      "item": "byg:pendoritegem"
+    },
+    "3": {
+      "item": "byg:pendoritegem"
+    },
+    "4": {
+      "item": "byg:stonestick"
+    },
+    "5": {
+      "item": "byg:pendoritegem"
+    },
+    "7": {
+      "item": "byg:stonestick"
+    }
+  },
+  "result": {
+    "item": "byg:pendoritebattleaxe",
+    "count": 1
+  }
+}

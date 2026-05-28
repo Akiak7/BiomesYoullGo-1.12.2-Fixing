@@ -1,0 +1,17 @@
+{
+  "group": "byg",
+  "type": "minecraft:crafting_shaped",
+  "pattern":[
+  "AAA",
+  "A A"
+  ],
+  "key":{
+  	"A":{
+  		"item": "byg:kasaichainplating"
+  	}
+  },
+  "result": {
+    "item": "byg:kasaiarmourhelmet",
+    "count": 1
+  }
+}

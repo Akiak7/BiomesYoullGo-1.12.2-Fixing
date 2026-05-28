@@ -1,0 +1,21 @@
+{
+  "group": "byg",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "1",
+    "4",
+    "4"
+  ],
+  "key": {
+    "1": {
+      "item": "byg:kasaiingot"
+    },
+    "4": {
+      "item": "byg:stonestick"
+    }
+  },
+  "result": {
+    "item": "byg:kasaishovel",
+    "count": 1
+  }
+}

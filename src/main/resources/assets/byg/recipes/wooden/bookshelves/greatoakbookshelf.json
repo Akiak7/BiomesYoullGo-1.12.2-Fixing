@@ -1,0 +1,21 @@
+{
+  "group": "byg",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PBP",
+    "PBP",
+    "PBP"
+  ],
+  "key": {
+    "P": {
+      "item": "byg:greatoakplanks"
+    },
+    "B": {
+      "item": "minecraft:book"
+    }
+  },
+  "result": {
+    "item": "byg:greatoakbookshelf",
+    "count": 1
+  }
+}

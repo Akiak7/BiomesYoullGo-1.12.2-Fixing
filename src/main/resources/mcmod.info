@@ -1,15 +1,15 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "",
+  "modid": "byg",
+  "name": "Biomes You'll Go",
+  "description": "An Adventure and Exploration mod with over 70 new biomes!",
+  "version": "1.8.0.1",
+  "mcversion": "1.12.2",
+  "url": "https://biomesyougo.weebly.com/",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
-  "logoFile": "",
+  "authorList": ["AOCAWOL", "SodiumZH", "MCreator"],
+  "credits": "By PotionStudios(AOCAWOL); Created using mod maker MCreator - https://mcreator.net/about; Maintained by SodiumZH after version 1.7.1",
+  "logoFile": "assets/byg/textures/logo_byg3.png",
   "screenshots": [],
   "dependencies": []
 }

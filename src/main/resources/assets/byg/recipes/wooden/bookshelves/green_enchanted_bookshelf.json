@@ -1,0 +1,21 @@
+{
+  "group": "byg",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PBP",
+    "PBP",
+    "PBP"
+  ],
+  "key": {
+    "P": {
+      "item": "byg:greenenchantedplanks"
+    },
+    "B": {
+      "item": "minecraft:book"
+    }
+  },
+  "result": {
+    "item": "byg:green_enchanted_bookshelf",
+    "count": 1
+  }
+}

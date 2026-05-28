@@ -1,0 +1,21 @@
+{
+  "group": "byg",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BPB",
+    "BPB"
+  ],
+  "key": {
+    "P": {
+      "item": "byg:cypressplanks"
+    },
+    "B": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    }
+  },
+  "result": {
+    "item": "byg:cypress_gate",
+    "count": 1
+  }
+}

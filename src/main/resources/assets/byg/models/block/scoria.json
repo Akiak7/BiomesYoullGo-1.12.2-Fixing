@@ -1,7 +1,12 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "byg:blocks/scoria",
-    "particle": "byg:blocks/scoria"
+    "down": "byg:blocks/scoria_top",
+    "up": "byg:blocks/scoria_top",
+    "north": "byg:blocks/scoria",
+    "east": "byg:blocks/scoria",
+    "south": "byg:blocks/scoria",
+    "west": "byg:blocks/scoria",
+    "particle": "byg:blocks/scoria_top"
   }
 }

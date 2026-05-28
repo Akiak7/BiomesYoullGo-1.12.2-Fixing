@@ -3,6 +3,6 @@
   "textures": {
     "all": "byg:blocks/willow_planks",
     "particle": "byg:blocks/willow_planks",
-    "aspen_planks": "byg:blocks/"
+    "aspen_planks": "byg:blocks/willow_planks"
   }
 }

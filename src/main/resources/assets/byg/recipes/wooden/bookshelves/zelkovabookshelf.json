@@ -1,0 +1,21 @@
+{
+  "group": "byg",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PBP",
+    "PBP",
+    "PBP"
+  ],
+  "key": {
+    "P": {
+      "item": "byg:zelkovaplanks"
+    },
+    "B": {
+      "item": "minecraft:book"
+    }
+  },
+  "result": {
+    "item": "byg:zelkovabookshelf",
+    "count": 1
+  }
+}

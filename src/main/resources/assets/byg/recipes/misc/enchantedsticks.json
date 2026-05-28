@@ -1,0 +1,18 @@
+{
+  "group": "byg",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+  " A",
+  "A "
+  ],
+  "key":{
+    "A": {
+      "type": "forge:ore_dict",
+      "ore": "plankWoodEnchanted"
+    }
+  },
+  "result": {
+    "item": "byg:enchantedstick",
+    "count": 4
+  }
+}

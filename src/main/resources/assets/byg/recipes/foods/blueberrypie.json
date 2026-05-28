@@ -1,0 +1,22 @@
+{
+  "group": "byg",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "byg:blueberry"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "byg:blueberry"
+    },
+    {
+      "item": "minecraft:egg"
+    }
+  ],
+  "result": {
+    "item": "byg:blueberrypie",
+    "count": 1
+  }
+}

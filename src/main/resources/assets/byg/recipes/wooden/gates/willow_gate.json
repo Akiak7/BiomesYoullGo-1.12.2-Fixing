@@ -1,0 +1,21 @@
+{
+  "group": "byg",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BPB",
+    "BPB"
+  ],
+  "key": {
+    "P": {
+      "item": "byg:willowplanks"
+    },
+    "B": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    }
+  },
+  "result": {
+    "item": "byg:willow_gate",
+    "count": 1
+  }
+}

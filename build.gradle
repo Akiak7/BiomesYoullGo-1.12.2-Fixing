@@ -9,9 +9,9 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "1.0"
-group = "com.yourname.modid"
-archivesBaseName = "modid"
+version = "1.8.0.1"
+group = "net.potionstudios.byg"
+archivesBaseName = "byg"
 
 sourceCompatibility = targetCompatibility = '1.8'
 compileJava {
@@ -40,4 +40,3 @@ runClient.outputs.upToDateWhen { false }
 runServer.outputs.upToDateWhen { false }
 
 apply from: 'mcreator.gradle'
-
