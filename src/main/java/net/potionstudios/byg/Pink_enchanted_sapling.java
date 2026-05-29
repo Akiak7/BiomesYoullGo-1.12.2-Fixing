@@ -131,9 +131,8 @@
        $_dependencies.put("y", Integer.valueOf(y));
        $_dependencies.put("z", Integer.valueOf(z));
        $_dependencies.put("world", world);
-       PinkenchantedsaplingPlantRightClicked.executeProcedure($_dependencies);
-       
-       return true;
+       $_dependencies.put("hand", hand);
+       return PinkenchantedsaplingPlantRightClicked.executeProcedure($_dependencies);
      }
    }
  }

@@ -131,9 +131,8 @@
        $_dependencies.put("y", Integer.valueOf(y));
        $_dependencies.put("z", Integer.valueOf(z));
        $_dependencies.put("world", world);
-       YellowsprucesaplingOnBlockRightclicked.executeProcedure($_dependencies);
-       
-       return true;
+       $_dependencies.put("hand", hand);
+       return YellowsprucesaplingOnBlockRightclicked.executeProcedure($_dependencies);
      }
    }
  }

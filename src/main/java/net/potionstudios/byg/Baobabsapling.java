@@ -130,9 +130,8 @@
        $_dependencies.put("y", Integer.valueOf(y));
        $_dependencies.put("z", Integer.valueOf(z));
        $_dependencies.put("world", world);
-       BaobabsaplingOnBlockRightclicked.executeProcedure($_dependencies);
-       
-       return true;
+       $_dependencies.put("hand", hand);
+       return BaobabsaplingOnBlockRightclicked.executeProcedure($_dependencies);
      }
    }
  }

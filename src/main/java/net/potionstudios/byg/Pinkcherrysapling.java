@@ -130,9 +130,8 @@
        $_dependencies.put("y", Integer.valueOf(y));
        $_dependencies.put("z", Integer.valueOf(z));
        $_dependencies.put("world", world);
-       PinkcherrysaplingOnBlockRightclicked.executeProcedure($_dependencies);
-       
-       return true;
+       $_dependencies.put("hand", hand);
+       return PinkcherrysaplingOnBlockRightclicked.executeProcedure($_dependencies);
      }
    }
  }

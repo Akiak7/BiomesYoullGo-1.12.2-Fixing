@@ -130,9 +130,8 @@
        $_dependencies.put("y", Integer.valueOf(y));
        $_dependencies.put("z", Integer.valueOf(z));
        $_dependencies.put("world", world);
-       MahoganysaplingOnBlockRightclicked.executeProcedure($_dependencies);
-       
-       return true;
+       $_dependencies.put("hand", hand);
+       return MahoganysaplingOnBlockRightclicked.executeProcedure($_dependencies);
      }
    }
  }

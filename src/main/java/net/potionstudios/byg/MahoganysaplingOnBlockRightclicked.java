@@ -1,5 +1,5 @@
  package net.potionstudios.byg;
- 
+
  import java.util.HashMap;
  import net.minecraft.block.Block;
  import net.minecraft.block.state.IBlockState;
@@ -8,6 +8,7 @@
  import net.minecraft.entity.player.EntityPlayer;
  import net.minecraft.init.Items;
  import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
  import net.minecraft.util.EnumParticleTypes;
  import net.minecraft.util.Mirror;
  import net.minecraft.util.ResourceLocation;
@@ -18,53 +19,57 @@
  import net.minecraft.world.WorldServer;
  import net.minecraft.world.gen.structure.template.PlacementSettings;
  import net.minecraft.world.gen.structure.template.Template;
- 
+
  @Elementsbyg.ModElement.Tag
  public class MahoganysaplingOnBlockRightclicked
    extends Elementsbyg.ModElement {
    public MahoganysaplingOnBlockRightclicked(Elementsbyg instance) {
      super(instance, 1425);
    }
-   
-   public static void executeProcedure(HashMap<String, Object> dependencies) {
+
+   public static boolean executeProcedure(HashMap<String, Object> dependencies) {
      if (dependencies.get("entity") == null) {
        System.err.println("Failed to load dependency entity for procedure MahoganysaplingOnBlockRightclicked!");
-       return;
-     } 
-     if (dependencies.get("x") == null) {
+       return false;
+     }
+     if (dependencies.get("hand") == null) {
+      System.err.println("Failed to load dependency hand for procedure MahoganysaplingOnBlockRightclicked!");
+      return false;
+    }
+    if (dependencies.get("x") == null) {
        System.err.println("Failed to load dependency x for procedure MahoganysaplingOnBlockRightclicked!");
-       return;
-     } 
+       return false;
+     }
      if (dependencies.get("y") == null) {
        System.err.println("Failed to load dependency y for procedure MahoganysaplingOnBlockRightclicked!");
-       return;
-     } 
+       return false;
+     }
      if (dependencies.get("z") == null) {
        System.err.println("Failed to load dependency z for procedure MahoganysaplingOnBlockRightclicked!");
-       return;
-     } 
+       return false;
+     }
      if (dependencies.get("world") == null) {
        System.err.println("Failed to load dependency world for procedure MahoganysaplingOnBlockRightclicked!");
-       return;
-     } 
+       return false;
+     }
      Entity entity = (Entity)dependencies.get("entity");
+    EnumHand hand = (EnumHand)dependencies.get("hand");
      int x = ((Integer)dependencies.get("x")).intValue();
      int y = ((Integer)dependencies.get("y")).intValue();
      int z = ((Integer)dependencies.get("z")).intValue();
      World world = (World)dependencies.get("world");
-     if (Math.random() < 0.4D && ((entity instanceof EntityLivingBase) ? ((EntityLivingBase)entity).getHeldItemMainhand() : ItemStack.EMPTY)
-       .getItem() == (new ItemStack(Items.DYE, 1, 15)).getItem()) {
+    if (!BYGBonemealGrowthHelper.isHeldBonemeal(entity, hand))
+      return false;
+     if (Math.random() < 0.4D) {
        if (Math.random() < 0.5D) {
-         if (entity instanceof EntityPlayer)
-           ((EntityPlayer)entity).inventory.clearMatchingItems((new ItemStack(Items.DYE, 1, 15)).getItem(), 15, 1, null); 
-         world.setBlockToAir(new BlockPos(x, y, z));
-         
+         BYGBonemealGrowthHelper.consumeHeldBonemeal(world, entity, hand);
          if (world.isRemote)
-           return; 
+           return true;
+         world.setBlockToAir(new BlockPos(x, y, z));
          Template template = ((WorldServer)world).getStructureTemplateManager().getTemplate(world.getMinecraftServer(), new ResourceLocation("byg", "mahogany_sapling1"));
-         
+
          if (template == null)
-           return; 
+          return true;
          BlockPos spawnTo = new BlockPos(x - 6, y, z - 6);
          IBlockState iblockstate = world.getBlockState(spawnTo);
          world.notifyBlockUpdate(spawnTo, iblockstate, iblockstate, 3);
@@ -72,31 +77,27 @@
              .setChunk((ChunkPos)null).setReplacedBlock((Block)null).setIgnoreStructureBlock(false).setIgnoreEntities(false));
        }
        else if (Math.random() < 0.5D) {
-         if (entity instanceof EntityPlayer)
-           ((EntityPlayer)entity).inventory.clearMatchingItems((new ItemStack(Items.DYE, 1, 15)).getItem(), 15, 1, null); 
-         world.setBlockToAir(new BlockPos(x, y, z));
-         
+         BYGBonemealGrowthHelper.consumeHeldBonemeal(world, entity, hand);
          if (world.isRemote)
-           return; 
+           return true;
+         world.setBlockToAir(new BlockPos(x, y, z));
          Template template = ((WorldServer)world).getStructureTemplateManager().getTemplate(world.getMinecraftServer(), new ResourceLocation("byg", "mahogany_sapling2"));
-         
+
          if (template == null)
-           return; 
+          return true;
          BlockPos spawnTo = new BlockPos(x - 6, y, z - 6);
          IBlockState iblockstate = world.getBlockState(spawnTo);
          world.notifyBlockUpdate(spawnTo, iblockstate, iblockstate, 3);
          template.addBlocksToWorldChunk(world, spawnTo, (new PlacementSettings()).setRotation(Rotation.NONE).setMirror(Mirror.NONE)
              .setChunk((ChunkPos)null).setReplacedBlock((Block)null).setIgnoreStructureBlock(false).setIgnoreEntities(false));
        }
-     
-     } else if (((entity instanceof EntityLivingBase) ? ((EntityLivingBase)entity).getHeldItemMainhand() : ItemStack.EMPTY).getItem() == (new ItemStack(Items.DYE, 1, 15))
-       .getItem()) {
-       if (entity instanceof EntityPlayer)
-         ((EntityPlayer)entity).inventory.clearMatchingItems((new ItemStack(Items.DYE, 1, 15)).getItem(), 15, 1, null); 
-       if (world instanceof WorldServer)
-         ((WorldServer)world).spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, x, y, z, 5, 3.0D, 3.0D, 3.0D, 1.0D, new int[0]); 
-     } 
-   }
+
+     } else {
+       BYGBonemealGrowthHelper.consumeHeldBonemeal(world, entity, hand);
+       BYGBonemealGrowthHelper.spawnHappyParticles(world, new BlockPos(x, y, z));
+     }
+    return true;
+}
  }
 
 
