@@ -35,6 +35,38 @@
      if (random.nextInt(1000000) + 1 <= 50000) {
        int i = i2 + random.nextInt(16) + 8;
        int k = k2 + random.nextInt(16) + 8;
+       boolean earlyBiomeCriteria = false;
+       Biome earlyBiome = world.getBiome(new BlockPos(i, 128, k));
+       if (((ResourceLocation)Biome.REGISTRY.getNameForObject(earlyBiome)).equals(new ResourceLocation("byg:bbluff_mountains")))
+         earlyBiomeCriteria = true;
+       if (((ResourceLocation)Biome.REGISTRY.getNameForObject(earlyBiome)).equals(new ResourceLocation("byg:bbluetaiga")))
+         earlyBiomeCriteria = true;
+       if (((ResourceLocation)Biome.REGISTRY.getNameForObject(earlyBiome)).equals(new ResourceLocation("byg:bseasonaltaiga")))
+         earlyBiomeCriteria = true;
+       if (((ResourceLocation)Biome.REGISTRY.getNameForObject(earlyBiome)).equals(new ResourceLocation("byg:bevergreentaiga")))
+         earlyBiomeCriteria = true;
+       if (((ResourceLocation)Biome.REGISTRY.getNameForObject(earlyBiome)).equals(new ResourceLocation("byg:bconiferousforest")))
+         earlyBiomeCriteria = true;
+       if (((ResourceLocation)Biome.REGISTRY.getNameForObject(earlyBiome)).equals(new ResourceLocation("byg:bpinemountains")))
+         earlyBiomeCriteria = true;
+       if (((ResourceLocation)Biome.REGISTRY.getNameForObject(earlyBiome)).equals(new ResourceLocation("byg:bsnowyevergeentaiga")))
+         earlyBiomeCriteria = true;
+       if (((ResourceLocation)Biome.REGISTRY.getNameForObject(earlyBiome)).equals(new ResourceLocation("byg:bweepingwitchforest")))
+         earlyBiomeCriteria = true;
+       if (((ResourceLocation)Biome.REGISTRY.getNameForObject(earlyBiome)).equals(new ResourceLocation("byg:bseasonalbirchforest")))
+         earlyBiomeCriteria = true;
+       if (((ResourceLocation)Biome.REGISTRY.getNameForObject(earlyBiome)).equals(new ResourceLocation("byg:bwhisperingwoods")))
+         earlyBiomeCriteria = true;
+       if (((ResourceLocation)Biome.REGISTRY.getNameForObject(earlyBiome)).equals(new ResourceLocation("byg:bdovermoutains")))
+         earlyBiomeCriteria = true;
+       if (((ResourceLocation)Biome.REGISTRY.getNameForObject(earlyBiome)).equals(new ResourceLocation("byg:bgiant_blue_spruce_taiga")))
+         earlyBiomeCriteria = true;
+       if (((ResourceLocation)Biome.REGISTRY.getNameForObject(earlyBiome)).equals(new ResourceLocation("byg:bgiant_seasonal_spruce_taiga")))
+         earlyBiomeCriteria = true;
+       if (((ResourceLocation)Biome.REGISTRY.getNameForObject(earlyBiome)).equals(new ResourceLocation("byg:bpine_lowlands")))
+         earlyBiomeCriteria = true;
+       if (!earlyBiomeCriteria)
+         return;
        int height = 255;
        if (isNetherType) {
          boolean notpassed = true;

@@ -35,6 +35,12 @@
      if (random.nextInt(1000000) + 1 <= 100000) {
        int i = i2 + random.nextInt(16) + 8;
        int k = k2 + random.nextInt(16) + 8;
+       boolean earlyBiomeCriteria = false;
+       Biome earlyBiome = world.getBiome(new BlockPos(i, 128, k));
+       if (((ResourceLocation)Biome.REGISTRY.getNameForObject(earlyBiome)).equals(new ResourceLocation("byg:bfloweringplains")))
+         earlyBiomeCriteria = true;
+       if (!earlyBiomeCriteria)
+         return;
        int height = 255;
        if (isNetherType) {
          boolean notpassed = true;

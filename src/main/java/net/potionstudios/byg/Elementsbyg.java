@@ -44,25 +44,31 @@
 /*     */   implements IFuelHandler, IWorldGenerator
 /*     */ {
 /*  46 */   protected final List<ModElement> elements = new ArrayList<>();
-/*  47 */   protected final List<Supplier<Block>> blocks = new ArrayList<>();
-/*  48 */   protected final List<Supplier<Item>> items = new ArrayList<>();
-/*  49 */   protected final List<Supplier<Biome>> biomes = new ArrayList<>();
-/*  50 */   protected final List<Supplier<EntityEntry>> entities = new ArrayList<>();
-/*  51 */   protected final List<Supplier<Potion>> potions = new ArrayList<>();
+/*  47 */   protected final List<ModElement> worldgenElements = new ArrayList<>();
+/*  48 */   protected final List<Supplier<Block>> blocks = new ArrayList<>();
+/*  49 */   protected final List<Supplier<Item>> items = new ArrayList<>();
+/*  50 */   protected final List<Supplier<Biome>> biomes = new ArrayList<>();
+/*  51 */   protected final List<Supplier<EntityEntry>> entities = new ArrayList<>();
+/*  52 */   protected final List<Supplier<Potion>> potions = new ArrayList<>();
 /*     */   
 /*     */   public void preInit(FMLPreInitializationEvent event) {
 /*     */     try {
 /*  55 */       for (ASMDataTable.ASMData asmData : event.getAsmData().getAll(ModElement.Tag.class.getName())) {
 /*  56 */         Class<?> clazz = Class.forName(asmData.getClassName());
-/*  57 */         if (clazz.getSuperclass() == ModElement.class)
-/*  58 */           elements.add((Elementsbyg.ModElement) clazz.getConstructor(this.getClass()).newInstance(this));
-/*     */       } 
+/*  57 */         if (clazz.getSuperclass() == ModElement.class) {
+/*  58 */           Elementsbyg.ModElement element = (Elementsbyg.ModElement)clazz.getConstructor(this.getClass()).newInstance(this);
+/*  59 */           this.elements.add(element);
+/*  60 */           if (declaresWorldGenerator(clazz))
+/*  61 */             this.worldgenElements.add(element);
+/*     */         }
+/*     */       }
 /*  60 */     } catch (Exception e) {
 /*  61 */       e.printStackTrace();
 /*     */     } 
 /*  63 */     Collections.sort(this.elements);
-/*  64 */     this.elements.forEach(ModElement::initElements);
-/*  65 */     addNetworkMessage((Class)bygVariables.WorldSavedDataSyncMessageHandler.class, bygVariables.WorldSavedDataSyncMessage.class, new Side[] { Side.SERVER, Side.CLIENT });
+/*  64 */     Collections.sort(this.worldgenElements);
+/*  65 */     this.elements.forEach(ModElement::initElements);
+/*  66 */     addNetworkMessage((Class)bygVariables.WorldSavedDataSyncMessageHandler.class, bygVariables.WorldSavedDataSyncMessage.class, new Side[] { Side.SERVER, Side.CLIENT });
 /*     */   }
 /*     */ 
 /*     */ 
@@ -70,8 +76,18 @@
 /*     */   public void registerSounds(RegistryEvent.Register<SoundEvent> event) {}
 /*     */ 
 /*     */   
+/*     */   private static boolean declaresWorldGenerator(Class<?> clazz) {
+/*     */     try {
+/*  74 */       clazz.getDeclaredMethod("generateWorld", new Class[] { Random.class, int.class, int.class, World.class, int.class, IChunkGenerator.class, IChunkProvider.class });
+/*  75 */       return true;
+/*  76 */     } catch (NoSuchMethodException|SecurityException e) {
+/*  77 */       return false;
+/*     */     }
+/*     */   }
+/*     */
+/*     */
 /*     */   public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator cg, IChunkProvider cp) {
-/*  74 */     this.elements.forEach(element -> element.generateWorld(random, chunkX * 16, chunkZ * 16, world, world.provider.getDimension(), cg, cp));
+/*  84 */     this.worldgenElements.forEach(element -> element.generateWorld(random, chunkX * 16, chunkZ * 16, world, world.provider.getDimension(), cg, cp));
 /*     */   }
 /*     */ 
 /*     */   
@@ -200,6 +216,3 @@
 /*     */     public static @interface Tag {}
 /*     */   }
 /*     */ }
-
-
-
