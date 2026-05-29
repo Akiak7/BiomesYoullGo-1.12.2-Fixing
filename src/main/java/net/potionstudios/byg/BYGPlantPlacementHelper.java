@@ -68,6 +68,33 @@ public final class BYGPlantPlacementHelper {
     return true;
   }
 
+  public static boolean placeHeldItemRelative(World world, BlockPos clickedPos, EntityPlayer player, EnumHand hand, EnumFacing side, Item item, Block supportBlock, Block plantBlock, EnumFacing placementSide) {
+    if (world == null || clickedPos == null || player == null || hand == null || side == null || item == null || supportBlock == null || plantBlock == null || placementSide == null)
+      return false;
+
+    if (side != placementSide)
+      return false;
+
+    if (world.getBlockState(clickedPos).getBlock() != supportBlock)
+      return false;
+
+    ItemStack held = player.getHeldItem(hand);
+    if (held.isEmpty() || held.getItem() != item)
+      return false;
+
+    BlockPos placePos = clickedPos.offset(placementSide);
+    if (!world.getBlockState(placePos).getBlock().isReplaceable(world, placePos))
+      return false;
+
+    if (!world.isRemote) {
+      world.setBlockState(placePos, plantBlock.getDefaultState(), 3);
+      if (!player.capabilities.isCreativeMode)
+        held.shrink(1);
+    }
+
+    return true;
+  }
+
   private static boolean placeHeldItemBlock(World world, BlockPos placePos, BlockPos soundPos, EntityPlayer player, EnumHand hand, Item item, IBlockState state, ResourceLocation soundName) {
     if (world == null || placePos == null || soundPos == null || player == null || hand == null || item == null || state == null)
       return false;
