@@ -4,6 +4,7 @@
  import net.minecraft.entity.Entity;
  import net.minecraft.entity.player.EntityPlayer;
  import net.minecraft.item.ItemStack;
+ import net.minecraft.util.EnumFacing;
  import net.minecraft.util.ResourceLocation;
  import net.minecraft.util.SoundCategory;
  import net.minecraft.util.SoundEvent;
@@ -42,6 +43,10 @@
      int y = ((Integer)dependencies.get("y")).intValue();
      int z = ((Integer)dependencies.get("z")).intValue();
      World world = (World)dependencies.get("world");
+     EnumFacing side = (EnumFacing)dependencies.get("side");
+     if (!BYGDoorGateStateHelper.canPlaceDoor(world, new BlockPos(x, y, z), side)) {
+       return;
+     }
      if (!((entity instanceof EntityPlayer) ? ((EntityPlayer)entity).capabilities.isCreativeMode : false)) {
        if (entity instanceof EntityPlayer) {
          ((EntityPlayer)entity).inventory.clearMatchingItems((new ItemStack(Baobabdooritem.block, 1)).getItem(), -1, 1, null);
@@ -49,14 +54,12 @@
        world.playSound((EntityPlayer)null, x, y, z, (SoundEvent)SoundEvent.REGISTRY
            .getObject(new ResourceLocation("block.wood.place")), SoundCategory.NEUTRAL, 1.0F, 1.0F);
        
-       world.setBlockState(new BlockPos(x, y + 1, z), Baobab_door_bottom.block.getDefaultState(), 3);
-       world.setBlockState(new BlockPos(x, y + 2, z), Baobab_door_top.block.getDefaultState(), 3);
+       BYGDoorGateStateHelper.placeDoor(world, new BlockPos(x, y + 1, z), Baobab_door_bottom.block.getDefaultState(), Baobab_door_top.block.getDefaultState(), entity, 3);
      } else if (((entity instanceof EntityPlayer) ? ((EntityPlayer)entity).capabilities.isCreativeMode : false) == true) {
        world.playSound((EntityPlayer)null, x, y, z, (SoundEvent)SoundEvent.REGISTRY
            .getObject(new ResourceLocation("block.wood.place")), SoundCategory.NEUTRAL, 1.0F, 1.0F);
        
-       world.setBlockState(new BlockPos(x, y + 1, z), Baobab_door_bottom.block.getDefaultState(), 3);
-       world.setBlockState(new BlockPos(x, y + 2, z), Baobab_door_top.block.getDefaultState(), 3);
+       BYGDoorGateStateHelper.placeDoor(world, new BlockPos(x, y + 1, z), Baobab_door_bottom.block.getDefaultState(), Baobab_door_top.block.getDefaultState(), entity, 3);
      } 
    }
  }

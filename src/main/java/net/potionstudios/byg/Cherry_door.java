@@ -77,6 +77,7 @@
        $_dependencies.put("y", Integer.valueOf(y));
        $_dependencies.put("z", Integer.valueOf(z));
        $_dependencies.put("world", world);
+       $_dependencies.put("side", side);
        CherrydoorRightClickedOnBlock.executeProcedure($_dependencies);
        
        return EnumActionResult.PASS;

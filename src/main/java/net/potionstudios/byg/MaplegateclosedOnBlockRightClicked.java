@@ -38,8 +38,7 @@
      world.playSound((EntityPlayer)null, x, y, z, (SoundEvent)SoundEvent.REGISTRY
          .getObject(new ResourceLocation("block.fence_gate.close")), SoundCategory.NEUTRAL, 1.0F, 1.0F);
      
-     world.setBlockToAir(new BlockPos(x, y, z));
-     world.setBlockState(new BlockPos(x, y, z), Maple_gate.block.getDefaultState(), 3);
+     BYGDoorGateStateHelper.replaceWithFacing(world, new BlockPos(x, y, z), Maple_gate.block.getDefaultState(), 3);
    }
  }
 

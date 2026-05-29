@@ -44,8 +44,7 @@
            
            .getObject(new ResourceLocation("block.wooden_door.close")), SoundCategory.NEUTRAL, 1.0F, 1.0F);
        
-       world.setBlockToAir(new BlockPos(x, y, z));
-       world.setBlockState(new BlockPos(x, y, z), Great_oak_door_top.block.getDefaultState(), 3);
+       BYGDoorGateStateHelper.replaceDoorFromTop(world, new BlockPos(x, y, z), Great_oak_door_bottom.block.getDefaultState(), Great_oak_door_top.block.getDefaultState(), 3);
      } 
    }
  }

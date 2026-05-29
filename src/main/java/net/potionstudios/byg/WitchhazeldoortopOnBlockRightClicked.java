@@ -38,10 +38,7 @@
      world.playSound((EntityPlayer)null, x, y, z, (SoundEvent)SoundEvent.REGISTRY
          .getObject(new ResourceLocation("block.wooden_door.open")), SoundCategory.NEUTRAL, 1.0F, 1.0F);
      
-     world.setBlockToAir(new BlockPos(x, y, z));
-     world.setBlockState(new BlockPos(x, y, z), Witch_hazel_open_top.block.getDefaultState(), 3);
+     BYGDoorGateStateHelper.replaceDoorFromTop(world, new BlockPos(x, y, z), Witch_hazel_door_open_bottom.block.getDefaultState(), Witch_hazel_open_top.block.getDefaultState(), 3);
    }
  }
-
-
 
