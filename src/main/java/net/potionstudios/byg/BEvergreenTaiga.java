@@ -128,11 +128,8 @@
        } else if (mir == 2) {
          mirror = Mirror.FRONT_BACK;
        }  BlockPos placeTo = pos.add(template.getSize().getX() / -2, 0, template.getSize().getZ() / -2);
-       IBlockState iblockstate = world.getBlockState(placeTo);
-       world.notifyBlockUpdate(placeTo, iblockstate, iblockstate, 3);
-       template.addBlocksToWorldChunk(world, placeTo, (new PlacementSettings()).setRandom(par2Random).setRotation(rotation).setMirror(mirror)
-           .setChunk((ChunkPos)null).setReplacedBlock((Block)null).setIgnoreStructureBlock(false).setIgnoreEntities(false));
-       return true;
+       return BYGWorldgenTemplateHelper.placeIfAreaLoaded(world, placeTo, template, (new PlacementSettings()).setRandom(par2Random).setRotation(rotation).setMirror(mirror)
+           .setReplacedBlock((Block)null).setIgnoreStructureBlock(false).setIgnoreEntities(false));
      }
  
      
