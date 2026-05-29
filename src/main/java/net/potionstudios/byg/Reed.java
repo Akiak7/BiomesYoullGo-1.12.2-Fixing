@@ -1,6 +1,5 @@
  package net.potionstudios.byg;
  
- import java.util.HashMap;
  import java.util.Random;
  import javax.annotation.Nullable;
  import net.minecraft.block.Block;
@@ -126,22 +125,9 @@
      
      public void updateTick(World world, BlockPos pos, IBlockState state, Random random) {
        super.updateTick(world, pos, state, random);
-       int x = pos.getX();
-       int y = pos.getY();
-       int z = pos.getZ();
-       Block block = this;
-       
-       HashMap<String, Object> $_dependencies = new HashMap<>();
-       $_dependencies.put("x", Integer.valueOf(x));
-       $_dependencies.put("y", Integer.valueOf(y));
-       $_dependencies.put("z", Integer.valueOf(z));
-       $_dependencies.put("world", world);
-       ReedUpdateTick.executeProcedure($_dependencies);
-       
-       world.scheduleUpdate(new BlockPos(x, y, z), this, tickRate(world));
+       BYGWaterPlantTickHelper.updateWaterSurvivalPlant(world, pos, Reeds.block);
+       world.scheduleUpdate(pos, this, tickRate(world));
      }
    }
  }
-
-
 
