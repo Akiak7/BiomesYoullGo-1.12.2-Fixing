@@ -46,7 +46,7 @@
        
        if (world.isRemote)
          return; 
-       Template template = ((WorldServer)world).getStructureTemplateManager().getTemplate(world.getMinecraftServer(), new ResourceLocation("byg", "sapling_bayou"));
+       Template template = ((WorldServer)world).getStructureTemplateManager().getTemplate(world.getMinecraftServer(), new ResourceLocation("byg", "bayoutree7"));
        
        if (template == null)
          return; 
@@ -61,6 +61,5 @@
      } 
    }
  }
-
 
 
