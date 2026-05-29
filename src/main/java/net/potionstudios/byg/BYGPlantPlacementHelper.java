@@ -46,6 +46,28 @@ public final class BYGPlantPlacementHelper {
     return placeHeldItemBlock(world, clickedPos.up(), clickedPos, player, hand, item, state, SLIME_PLACE_SOUND);
   }
 
+  public static boolean growGlowshroom(World world, BlockPos pos, EntityPlayer player, EnumHand hand, Item item, Block nextStageBlock) {
+    if (world == null || pos == null || player == null || hand == null || item == null || nextStageBlock == null)
+      return false;
+
+    ItemStack held = player.getHeldItem(hand);
+    if (held.isEmpty() || held.getItem() != item)
+      return false;
+
+    if (!world.isRemote) {
+      SoundEvent sound = SoundEvent.REGISTRY.getObject(SLIME_PLACE_SOUND);
+      if (sound != null)
+        world.playSound((EntityPlayer)null, pos, sound, SoundCategory.NEUTRAL, 1.0F, 1.0F);
+
+      world.setBlockToAir(pos);
+      world.setBlockState(pos, nextStageBlock.getDefaultState(), 3);
+      if (!player.capabilities.isCreativeMode)
+        held.shrink(1);
+    }
+
+    return true;
+  }
+
   private static boolean placeHeldItemBlock(World world, BlockPos placePos, BlockPos soundPos, EntityPlayer player, EnumHand hand, Item item, IBlockState state, ResourceLocation soundName) {
     if (world == null || placePos == null || soundPos == null || player == null || hand == null || item == null || state == null)
       return false;

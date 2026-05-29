@@ -22,6 +22,13 @@ public final class BYGBonemealGrowthHelper {
     return isBonemeal(held);
   }
 
+  public static boolean isOtherHandBonemeal(Entity entity, EnumHand hand) {
+    if (hand == null)
+      return false;
+
+    return isHeldBonemeal(entity, hand == EnumHand.MAIN_HAND ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
+  }
+
   public static void consumeHeldBonemeal(World world, Entity entity, EnumHand hand) {
     if (world == null || world.isRemote || !(entity instanceof EntityPlayer) || hand == null)
       return;

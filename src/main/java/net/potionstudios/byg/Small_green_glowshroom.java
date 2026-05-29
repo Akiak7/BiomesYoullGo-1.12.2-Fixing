@@ -159,12 +159,11 @@
        $_dependencies.put("y", Integer.valueOf(y));
        $_dependencies.put("z", Integer.valueOf(z));
        $_dependencies.put("world", world);
-       SmallgreenglowshroomOnBlockRightClicked.executeProcedure($_dependencies);
+       $_dependencies.put("hand", hand);
        
-       return true;
+       return SmallgreenglowshroomOnBlockRightClicked.executeProcedure($_dependencies);
      }
    }
  }
-
 
 
