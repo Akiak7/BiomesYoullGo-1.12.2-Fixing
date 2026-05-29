@@ -62,13 +62,9 @@
        return; 
      boolean biomeCriteria = false;
      Biome biome = world.getBiome(new BlockPos(chunkX, 128, chunkZ));
-     if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:@registryname")))
-       biomeCriteria = true; 
      if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:bchaparrallowlands")))
        biomeCriteria = true; 
      if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("plains")))
-       biomeCriteria = true; 
-     if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:@registryname")))
        biomeCriteria = true; 
      if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:bborealforest")))
        biomeCriteria = true; 
@@ -112,6 +108,4 @@
      }
    }
  }
-
-
 

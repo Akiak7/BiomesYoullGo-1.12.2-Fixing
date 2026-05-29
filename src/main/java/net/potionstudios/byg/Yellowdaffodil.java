@@ -62,8 +62,6 @@
        return; 
      boolean biomeCriteria = false;
      Biome biome = world.getBiome(new BlockPos(chunkX, 128, chunkZ));
-     if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:@registryname")))
-       biomeCriteria = true; 
      if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:bstellatapasture")))
        biomeCriteria = true; 
      if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:borchard")))
@@ -104,6 +102,4 @@
      }
    }
  }
-
-
 

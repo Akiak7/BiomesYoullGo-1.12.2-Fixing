@@ -77,8 +77,6 @@
          biomeCriteria = true; 
        if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:bshrublands")))
          biomeCriteria = true; 
-       if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:@registryname")))
-         biomeCriteria = true; 
        if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:bweepingwitchforest")))
          biomeCriteria = true; 
        if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:blushdesert")))
@@ -117,6 +115,4 @@
      } 
    }
  }
-
-
 

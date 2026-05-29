@@ -72,8 +72,6 @@
        biomeCriteria = true; 
      if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("forest")))
        biomeCriteria = true; 
-     if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:@registryname")))
-       biomeCriteria = true; 
      if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:bwoodlands")))
        biomeCriteria = true; 
      if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:bredwoodtropics")))
@@ -119,6 +117,4 @@
      }
    }
  }
-
-
 

@@ -64,8 +64,6 @@
      Biome biome = world.getBiome(new BlockPos(chunkX, 128, chunkZ));
      if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:bcherrygrove")))
        biomeCriteria = true; 
-     if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:@registryname")))
-       biomeCriteria = true; 
      if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:bredoakforest")))
        biomeCriteria = true; 
      if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:borchard")))
@@ -110,6 +108,4 @@
      }
    }
  }
-
-
 

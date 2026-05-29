@@ -60,7 +60,7 @@
        
        if (world.isRemote)
          return; 
-       Template template = ((WorldServer)world).getStructureTemplateManager().getTemplate(world.getMinecraftServer(), new ResourceLocation("byg", "weepingtree_sapling"));
+       Template template = ((WorldServer)world).getStructureTemplateManager().getTemplate(world.getMinecraftServer(), new ResourceLocation("byg", "witch_hazel_sapling1"));
        
        if (template == null)
          return; 
@@ -82,6 +82,5 @@
      } 
    }
  }
-
 
 
