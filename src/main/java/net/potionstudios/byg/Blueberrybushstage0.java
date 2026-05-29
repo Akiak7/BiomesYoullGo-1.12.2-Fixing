@@ -1,5 +1,5 @@
  package net.potionstudios.byg;
- 
+
  import java.util.HashMap;
  import java.util.Random;
  import net.minecraft.block.Block;
@@ -29,62 +29,62 @@
  import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
  import net.minecraftforge.fml.relauncher.Side;
  import net.minecraftforge.fml.relauncher.SideOnly;
- 
+
  @Elementsbyg.ModElement.Tag
  public class Blueberrybushstage0
    extends Elementsbyg.ModElement
  {
    @ObjectHolder("byg:blueberrybushstage0")
    public static final Block block = null;
-   
+
    public Blueberrybushstage0(Elementsbyg instance) {
      super(instance, 866);
    }
- 
-   
+
+
    public void initElements() {
      this.elements.blocks.add(() -> new BlockCustomFlower());
      this.elements.items.add(() -> (Item)(new ItemBlock(block)).setRegistryName(block.getRegistryName()));
    }
- 
- 
-   
+
+
+
    @SideOnly(Side.CLIENT)
    public void registerModels(ModelRegistryEvent event) {
      ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation("byg:blueberrybushstage0", "inventory"));
    }
- 
-   
+
+
    public void generateWorld(Random random, int chunkX, int chunkZ, World world, int dimID, IChunkGenerator cg, IChunkProvider cp) {
      boolean dimensionCriteria = false;
      if (dimID == 0)
-       dimensionCriteria = true; 
+       dimensionCriteria = true;
      if (!dimensionCriteria)
-       return; 
+       return;
      boolean biomeCriteria = false;
      Biome biome = world.getBiome(new BlockPos(chunkX, 128, chunkZ));
      if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:bbluetaiga")))
-       biomeCriteria = true; 
+       biomeCriteria = true;
      if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:bborealforest")))
-       biomeCriteria = true; 
+       biomeCriteria = true;
      if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:bconiferousforest")))
-       biomeCriteria = true; 
+       biomeCriteria = true;
      if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:bevergreentaiga")))
-       biomeCriteria = true; 
+       biomeCriteria = true;
      if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:bsnowyconiferousforest")))
-       biomeCriteria = true; 
+       biomeCriteria = true;
      if (((ResourceLocation)Biome.REGISTRY.getNameForObject(biome)).equals(new ResourceLocation("byg:bsnowyevergeentaiga")))
-       biomeCriteria = true; 
+       biomeCriteria = true;
      if (!biomeCriteria)
-       return; 
+       return;
      for (int i = 0; i < 2; i++) {
        int l6 = chunkX + random.nextInt(16) + 8;
        int i11 = random.nextInt(128);
        int l14 = chunkZ + random.nextInt(16) + 8;
        (new WorldGenFlowers((BlockFlower)block, BlockFlower.EnumFlowerType.DANDELION)).generate(world, random, new BlockPos(l6, i11, l14));
-     } 
+     }
    }
-   
+
    public static class BlockCustomFlower extends BlockFlower {
      public BlockCustomFlower() {
        setSoundType(SoundType.PLANT);
@@ -95,27 +95,27 @@
        setUnlocalizedName("blueberrybushstage0");
        setRegistryName("blueberrybushstage0");
      }
- 
-     
+
+
      public BlockFlower.EnumFlowerColor getBlockType() {
        return BlockFlower.EnumFlowerColor.YELLOW;
      }
- 
-     
+
+
      @SideOnly(Side.CLIENT)
      public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
        for (BlockFlower.EnumFlowerType blockflower$enumflowertype : BlockFlower.EnumFlowerType.getTypes(getBlockType())) {
          list.add(new ItemStack((Block)this, 1, blockflower$enumflowertype.getMeta()));
        }
      }
- 
-     
+
+
      public void updateTick(World world, BlockPos pos, IBlockState state, Random random) {
        int x = pos.getX();
        int y = pos.getY();
        int z = pos.getZ();
        BlockCustomFlower blockCustomFlower = this;
-       
+
        HashMap<String, Object> $_dependencies = new HashMap<>();
        $_dependencies.put("x", Integer.valueOf(x));
        $_dependencies.put("y", Integer.valueOf(y));
@@ -123,32 +123,31 @@
        $_dependencies.put("world", world);
        Blueberrybushstage0UpdateTick.executeProcedure($_dependencies);
      }
- 
- 
-     
+
+
+
      public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer entity, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
        int x = pos.getX();
        int y = pos.getY();
        int z = pos.getZ();
        BlockCustomFlower blockCustomFlower = this;
-       
+
        HashMap<String, Object> $_dependencies = new HashMap<>();
        $_dependencies.put("entity", entity);
        $_dependencies.put("x", Integer.valueOf(x));
-       $_dependencies.put("y", Integer.valueOf(y));
-       $_dependencies.put("z", Integer.valueOf(z));
-       $_dependencies.put("world", world);
-       Blueberrybushstage0OnBlockRightclicked.executeProcedure($_dependencies);
-       
-       return true;
-     }
- 
-     
+      $_dependencies.put("y", Integer.valueOf(y));
+      $_dependencies.put("z", Integer.valueOf(z));
+      $_dependencies.put("world", world);
+      $_dependencies.put("hand", hand);
+
+      return Blueberrybushstage0OnBlockRightclicked.executeProcedure($_dependencies);
+    }
+
+
      public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
        drops.add(new ItemStack(Blocks.AIR, 1));
      }
    }
  }
-
 
 

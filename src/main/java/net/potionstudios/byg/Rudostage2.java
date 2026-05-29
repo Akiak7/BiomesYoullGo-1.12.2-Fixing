@@ -1,5 +1,5 @@
  package net.potionstudios.byg;
- 
+
  import java.util.HashMap;
  import java.util.Random;
  import net.minecraft.block.Block;
@@ -27,28 +27,28 @@
  import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
  import net.minecraftforge.fml.relauncher.Side;
  import net.minecraftforge.fml.relauncher.SideOnly;
- 
+
  @Elementsbyg.ModElement.Tag
  public class Rudostage2 extends Elementsbyg.ModElement {
    @ObjectHolder("byg:rudostage2")
    public static final Block block = null;
-   
+
    public Rudostage2(Elementsbyg instance) {
      super(instance, 854);
    }
- 
-   
+
+
    public void initElements() {
      this.elements.blocks.add(() -> new BlockCustomFlower());
      this.elements.items.add(() -> (Item)(new ItemBlock(block)).setRegistryName(block.getRegistryName()));
    }
- 
-   
+
+
    @SideOnly(Side.CLIENT)
    public void registerModels(ModelRegistryEvent event) {
      ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation("byg:rudostage2", "inventory"));
    }
-   
+
    public static class BlockCustomFlower extends BlockReed {
      public BlockCustomFlower() {
        setSoundType(SoundType.PLANT);
@@ -59,43 +59,43 @@
        setUnlocalizedName("rudostage2");
        setRegistryName("rudostage2");
      }
- 
-     
+
+
      public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
        return new ItemStack(Item.getItemFromBlock((Block)this), 1, damageDropped(state));
      }
- 
-     
+
+
      public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
        return EnumPlantType.Crop;
      }
- 
-     
+
+
      public boolean canPlaceBlockAt(World world, BlockPos pos) {
        Block block2 = world.getBlockState(pos.down()).getBlock();
        return (block2.canSustainPlant(world.getBlockState(pos.down()), (IBlockAccess)world, pos.down(), EnumFacing.UP, (IPlantable)this) || block2 == Rudostage2.block);
      }
-     
+
      @SideOnly(Side.CLIENT)
      public int colorMultiplier(IBlockAccess p_149720_1_, BlockPos pos, int pass) {
        return 16777215;
      }
- 
-     
+
+
      public void updateTick(World world, BlockPos pos, IBlockState state, Random random) {
        int x = pos.getX();
        int y = pos.getY();
        int z = pos.getZ();
        BlockCustomFlower blockCustomFlower = this;
-       
+
        HashMap<String, Object> $_dependencies = new HashMap<>();
        $_dependencies.put("x", Integer.valueOf(x));
        $_dependencies.put("y", Integer.valueOf(y));
        $_dependencies.put("z", Integer.valueOf(z));
        $_dependencies.put("world", world);
        Rudostage2UpdateTick.executeProcedure($_dependencies);
-       
-       if ((world.getBlockState(pos.down()).getBlock() == blockCustomFlower || checkForDrop(world, pos, state)) && 
+
+       if ((world.getBlockState(pos.down()).getBlock() == blockCustomFlower || checkForDrop(world, pos, state)) &&
          world.isAirBlock(pos.up())) {
          int l;
          for (l = 1; world.getBlockState(pos.down(l)).getBlock() == this; l++);
@@ -106,36 +106,35 @@
              world.setBlockState(pos, state.withProperty((IProperty)AGE, Integer.valueOf(0)), 4);
            } else {
              world.setBlockState(pos, state.withProperty((IProperty)AGE, Integer.valueOf(i1 + 1)), 4);
-           } 
-         } 
-       } 
+           }
+         }
+       }
      }
- 
- 
-     
+
+
+
      public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer entity, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
        int x = pos.getX();
        int y = pos.getY();
        int z = pos.getZ();
        BlockCustomFlower blockCustomFlower = this;
-       
+
        HashMap<String, Object> $_dependencies = new HashMap<>();
        $_dependencies.put("entity", entity);
        $_dependencies.put("x", Integer.valueOf(x));
-       $_dependencies.put("y", Integer.valueOf(y));
-       $_dependencies.put("z", Integer.valueOf(z));
-       $_dependencies.put("world", world);
-       Rudostage2OnBlockRightclicked.executeProcedure($_dependencies);
-       
-       return true;
-     }
- 
-     
+      $_dependencies.put("y", Integer.valueOf(y));
+      $_dependencies.put("z", Integer.valueOf(z));
+      $_dependencies.put("world", world);
+      $_dependencies.put("hand", hand);
+
+      return Rudostage2OnBlockRightclicked.executeProcedure($_dependencies);
+    }
+
+
      public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
        drops.add(new ItemStack(Blocks.AIR, 2));
      }
    }
  }
-
 
 

@@ -1,5 +1,5 @@
  package net.potionstudios.byg;
- 
+
  import java.util.HashMap;
  import java.util.Random;
  import net.minecraft.block.Block;
@@ -24,31 +24,31 @@
  import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
  import net.minecraftforge.fml.relauncher.Side;
  import net.minecraftforge.fml.relauncher.SideOnly;
- 
+
  @Elementsbyg.ModElement.Tag
  public class Blueberrybushstage1
    extends Elementsbyg.ModElement
  {
    @ObjectHolder("byg:blueberrybushstage1")
    public static final Block block = null;
-   
+
    public Blueberrybushstage1(Elementsbyg instance) {
      super(instance, 867);
    }
- 
-   
+
+
    public void initElements() {
      this.elements.blocks.add(() -> new BlockCustomFlower());
      this.elements.items.add(() -> (Item)(new ItemBlock(block)).setRegistryName(block.getRegistryName()));
    }
- 
- 
-   
+
+
+
    @SideOnly(Side.CLIENT)
    public void registerModels(ModelRegistryEvent event) {
      ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation("byg:blueberrybushstage1", "inventory"));
    }
-   
+
    public static class BlockCustomFlower extends BlockFlower {
      public BlockCustomFlower() {
        setSoundType(SoundType.PLANT);
@@ -59,27 +59,27 @@
        setUnlocalizedName("blueberrybushstage1");
        setRegistryName("blueberrybushstage1");
      }
- 
-     
+
+
      public BlockFlower.EnumFlowerColor getBlockType() {
        return BlockFlower.EnumFlowerColor.YELLOW;
      }
- 
-     
+
+
      @SideOnly(Side.CLIENT)
      public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list) {
        for (BlockFlower.EnumFlowerType blockflower$enumflowertype : BlockFlower.EnumFlowerType.getTypes(getBlockType())) {
          list.add(new ItemStack((Block)this, 1, blockflower$enumflowertype.getMeta()));
        }
      }
- 
-     
+
+
      public void updateTick(World world, BlockPos pos, IBlockState state, Random random) {
        int x = pos.getX();
        int y = pos.getY();
        int z = pos.getZ();
        BlockCustomFlower blockCustomFlower = this;
-       
+
        HashMap<String, Object> $_dependencies = new HashMap<>();
        $_dependencies.put("x", Integer.valueOf(x));
        $_dependencies.put("y", Integer.valueOf(y));
@@ -87,32 +87,31 @@
        $_dependencies.put("world", world);
        Blueberrybushstage1UpdateTick.executeProcedure($_dependencies);
      }
- 
- 
-     
+
+
+
      public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer entity, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
        int x = pos.getX();
        int y = pos.getY();
        int z = pos.getZ();
        BlockCustomFlower blockCustomFlower = this;
-       
+
        HashMap<String, Object> $_dependencies = new HashMap<>();
        $_dependencies.put("entity", entity);
        $_dependencies.put("x", Integer.valueOf(x));
-       $_dependencies.put("y", Integer.valueOf(y));
-       $_dependencies.put("z", Integer.valueOf(z));
-       $_dependencies.put("world", world);
-       Blueberrybushstage1OnBlockRightclicked.executeProcedure($_dependencies);
-       
-       return true;
-     }
- 
-     
+      $_dependencies.put("y", Integer.valueOf(y));
+      $_dependencies.put("z", Integer.valueOf(z));
+      $_dependencies.put("world", world);
+      $_dependencies.put("hand", hand);
+
+      return Blueberrybushstage1OnBlockRightclicked.executeProcedure($_dependencies);
+    }
+
+
      public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
        drops.add(new ItemStack(Blocks.AIR, 1));
      }
    }
  }
-
 
 

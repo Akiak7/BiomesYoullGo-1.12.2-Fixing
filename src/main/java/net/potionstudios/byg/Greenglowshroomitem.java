@@ -80,16 +80,14 @@
        
        HashMap<String, Object> $_dependencies = new HashMap<>();
        $_dependencies.put("entity", entity);
+       $_dependencies.put("hand", hand);
        $_dependencies.put("x", Integer.valueOf(x));
        $_dependencies.put("y", Integer.valueOf(y));
        $_dependencies.put("z", Integer.valueOf(z));
        $_dependencies.put("world", world);
-       GreenglowshroomitemRightClickedOnBlock.executeProcedure($_dependencies);
-       
-       return EnumActionResult.PASS;
+       return GreenglowshroomitemRightClickedOnBlock.executeProcedure($_dependencies) ? EnumActionResult.SUCCESS : EnumActionResult.PASS;
      }
    }
  }
-
 
 
