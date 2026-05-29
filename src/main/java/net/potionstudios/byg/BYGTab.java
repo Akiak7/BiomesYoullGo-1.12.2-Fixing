@@ -20,14 +20,7 @@
        public ItemStack getTabIconItem() {
          return new ItemStack(BYGLogo.block, 1);
        }
-       
-       @SideOnly(Side.CLIENT)
-       public boolean hasSearchBar() {
-         return true;
-       }
      };
-     tab.setBackgroundImageName("item_search.png");
      return tab;
    }
   }
-
