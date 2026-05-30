@@ -21,6 +21,8 @@
  import net.minecraftforge.fml.relauncher.Side;
  import net.minecraftforge.fml.relauncher.SideOnly;
  import net.minecraftforge.oredict.OreDictionary;
+ import net.minecraft.item.ItemStack;
+ import net.minecraft.util.NonNullList;
  
  @Elementsbyg.ModElement.Tag
  public class Witchhazelleavesblooming
@@ -83,23 +85,12 @@
      }
  
      
-     public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer entity, boolean willHarvest) {
-       boolean retval = super.removedByPlayer(state, world, pos, entity, willHarvest);
-       int x = pos.getX();
-       int y = pos.getY();
-       int z = pos.getZ();
-       Block block = this;
-       
-       HashMap<String, Object> $_dependencies = new HashMap<>();
-       $_dependencies.put("entity", entity);
-       $_dependencies.put("x", Integer.valueOf(x));
-       $_dependencies.put("y", Integer.valueOf(y));
-       $_dependencies.put("z", Integer.valueOf(z));
-       $_dependencies.put("world", world);
-       WitchhazelleavesbloomingBlockDestroyedByPlayer.executeProcedure($_dependencies);
-       
-       return retval;
+     public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+       BYGLeafDropHelper.addSaplingDrop(drops, Witchhazelsapling.block, 0.03D);
      }
+
+
+
    }
  }
 

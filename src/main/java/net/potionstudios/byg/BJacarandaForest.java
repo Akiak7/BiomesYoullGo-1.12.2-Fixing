@@ -124,12 +124,12 @@
          if (position.getY() < world.getHeight() - height - 1) {
            world.setBlockState(position.down(), Blocks.DIRT.getDefaultState(), 2); int genh;
            for (genh = position.getY() - 3 + height; genh <= position.getY() + height; genh++) {
-             int i4 = genh - position.getY() + height;
-             int j1 = (int)(1.0D - i4 * 0.5D);
-             for (int k1 = position.getX() - j1; k1 <= position.getX() + j1; k1++) {
-               for (int i2 = position.getZ() - j1; i2 <= position.getZ() + j1; i2++) {
-                 int j2 = i2 - position.getZ();
-                 if (Math.abs(position.getX()) != j1 || Math.abs(j2) != j1 || (rand.nextInt(2) != 0 && i4 != 0)) {
+            int i4 = genh - (position.getY() + height);
+            int j1 = (int)(1.0D - i4 * 0.5D);
+            for (int k1 = position.getX() - j1; k1 <= position.getX() + j1; k1++) {
+              for (int i2 = position.getZ() - j1; i2 <= position.getZ() + j1; i2++) {
+                int j2 = i2 - position.getZ();
+                if (Math.abs(k1 - position.getX()) != j1 || Math.abs(j2) != j1 || (rand.nextInt(2) != 0 && i4 != 0)) {
                    BlockPos blockpos = new BlockPos(k1, genh, i2);
                    state = world.getBlockState(blockpos);
                    if (state.getBlock().isAir(state, (IBlockAccess)world, blockpos) || state.getBlock().isLeaves(state, (IBlockAccess)world, blockpos) || state
@@ -200,6 +200,5 @@
      }
    }
  }
-
 
 

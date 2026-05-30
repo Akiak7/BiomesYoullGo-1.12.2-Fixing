@@ -9,9 +9,13 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "1.8.0.1"
+version = "1.9"
 group = "net.potionstudios.byg"
-archivesBaseName = "byg"
+archivesBaseName = "BYG_1.12.2"
+
+jar {
+    archiveName = "${archivesBaseName}_${version}.jar"
+}
 
 sourceCompatibility = targetCompatibility = '1.8'
 compileJava {
